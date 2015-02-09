@@ -1,7 +1,7 @@
 {
-  "name": "typeahead.js",
-  "version": "0.10.5",
-  "main": "dist/typeahead.js",
+  "name": "styled-select",
+  "version": "0.1.0",
+  "main": "dist/styled-select.js",
   "dependencies": {
     "jquery": ">=1.7"
   },
