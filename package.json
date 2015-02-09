@@ -1,0 +1,31 @@
+{
+  "name": "styled-select",
+  "description": "Styled select with simple js & css",
+  "keywords": [
+    "select",
+    "styled"
+  ],
+  "homepage": "https://github.com/mchayka/styled-select",
+  "bugs": "https://github.com/mchayka/styled-select/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mchayka/styled-select.git"
+  },
+  "author": {
+    "name": "Mike Chayka",
+    "url": "https://github.com/mchayka"
+  },
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-concurrent": "^0.5.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-concat": "~0.1",
+    "grunt-contrib-connect": "~0.1",
+    "grunt-contrib-jshint": "~0.8",
+    "grunt-contrib-uglify": "~0.2.6",
+    "grunt-contrib-watch": "~0.2",
+    "load-grunt-tasks": "^3.1.0"
+  },
+  "version": "0.1.0",
+  "main": "dist/styled-select.js"
+}

@@ -1,2 +1,2 @@
-# styled-select
-Style select with simple js &amp; css
+# Styled select
+Styled select with simple js &amp; css

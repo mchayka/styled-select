@@ -1,0 +1,28 @@
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Styled select test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script src="../bower_components/jquery/jquery.min.js"></script>
+        <script src="../dist/styled-select.jquery.js"></script>
+    </head>
+    <body>
+      <form action="">
+        <select id="custom">
+        	<option value="1">Value 1</option>
+            <option value="2">Value 2</option>
+            <option value="3">Value 3</option>
+            <option value="4">Value 4</option>
+            <option value="5">Value 5</option>
+        </select>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
+      <script>
+          $('#custom').styledSelect();
+      </script>
+    </body>
+</html>
