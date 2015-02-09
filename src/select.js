@@ -11,26 +11,21 @@ var Select = (function() {
   // -----------
 
   function Select(o) {
-    var that;
-
-    that = this;
+    var onChange;
 
     if (!o.control || !$(o.control).is('select')) {
       $.error('missing select');
     }
 
     // bound functions
-    // onBlur = _.bind(this._onBlur, this);
-    // onFocus = _.bind(this._onFocus, this);
-    // onInput = _.bind(this._onInput, this);
-    //
-    this.$node = buildDom(o.control);
-    this.$control = $(o.control);
-    this.$placeholder = this.$node.find('.ss-placeholder');
-    // .on('blur.tt', onBlur)
-    // .on('focus.tt', onFocus);
+    onChange = $.proxy(this._onChange, this);
 
-    // store default value to be able to reset value
+    this.$node = buildDom(o.control);
+    this.$placeholder = this.$node.find('.ss-placeholder');
+    this.$control = $(o.control)
+    .on('change.ss', onChange);
+
+    // store default value to be able to reset the value
     this._setDefaultValue(this.getValue());
   }
 
@@ -40,6 +35,11 @@ var Select = (function() {
   Select.prototype = {
     // ### private
 
+    _onChange: function() {
+      console.log('change');
+      this._setPlaceholderValue(this.getValue());
+    },
+
     _checkChanges: function() {
       this.getValue() === this._getDefaultValue() ?
       this.$control.removeClass('is-changed') : this.$control.addClass('is-changed');
@@ -47,15 +47,19 @@ var Select = (function() {
     },
 
     _setDefaultValue: function(value) {
+      this._setPlaceholderValue(value);
+      this.$control.data('default-value', value);
+    },
+
+    _setPlaceholderValue: function(value) {
       this.$placeholder.text(value);
-      return this.$control.data('default-value', value);
     },
 
     // ### public
 
     setValue: function(value) {
       this.$control.val(value);
-      this.$placeholder.text(value);
+      this._setPlaceholderValue(value);
     },
 
     getValue: function() {
@@ -84,9 +88,9 @@ var Select = (function() {
   function buildDom(control) {
     var $control, $wrapper, $placeholder;
 
-    $wrapper = $(html.wrapper);
+    $wrapper = $(html.wrapper).css(css.wrapper);
     $control = $(control).css(css.control);
-    $placeholder = $(html.placeholder);
+    $placeholder = $(html.placeholder).css(css.placeholder);
 
     $control.addClass('ss-control');
 

@@ -9,7 +9,20 @@
         "use strict";
         var css = {
             control: {
-                visibility: "hidden"
+                position: "relative",
+                opacity: "0",
+                zIndex: "1"
+            },
+            wrapper: {
+                position: "relative"
+            },
+            placeholder: {
+                position: "absolute",
+                left: "0",
+                right: "0",
+                top: "0",
+                bottom: "0",
+                zIndex: "0"
             }
         };
         return css;
@@ -23,28 +36,35 @@
     var Select = function() {
         "use strict";
         function Select(o) {
-            var that;
-            that = this;
+            var onChange;
             if (!o.control || !$(o.control).is("select")) {
                 $.error("missing select");
             }
+            onChange = $.proxy(this._onChange, this);
             this.$node = buildDom(o.control);
-            this.$control = $(o.control);
             this.$placeholder = this.$node.find(".ss-placeholder");
+            this.$control = $(o.control).on("change.ss", onChange);
             this._setDefaultValue(this.getValue());
         }
         Select.prototype = {
+            _onChange: function() {
+                console.log("change");
+                this._setPlaceholderValue(this.getValue());
+            },
             _checkChanges: function() {
                 this.getValue() === this._getDefaultValue() ? this.$control.removeClass("is-changed") : this.$control.addClass("is-changed");
                 this.$control.trigger("changedInput.tt");
             },
             _setDefaultValue: function(value) {
+                this._setPlaceholderValue(value);
+                this.$control.data("default-value", value);
+            },
+            _setPlaceholderValue: function(value) {
                 this.$placeholder.text(value);
-                return this.$control.data("default-value", value);
             },
             setValue: function(value) {
                 this.$control.val(value);
-                this.$placeholder.text(value);
+                this._setPlaceholderValue(value);
             },
             getValue: function() {
                 return this.$control.val();
@@ -64,9 +84,9 @@
         return Select;
         function buildDom(control) {
             var $control, $wrapper, $placeholder;
-            $wrapper = $(html.wrapper);
+            $wrapper = $(html.wrapper).css(css.wrapper);
             $control = $(control).css(css.control);
-            $placeholder = $(html.placeholder);
+            $placeholder = $(html.placeholder).css(css.placeholder);
             $control.addClass("ss-control");
             return $control.wrap($wrapper).parent().prepend($placeholder);
         }

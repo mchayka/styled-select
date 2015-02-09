@@ -1,7 +1,7 @@
 {
   "name": "styled-select",
   "version": "0.1.0",
-  "main": "dist/styled-select.js",
+  "main": "dist/styled-select.jquery.js",
   "dependencies": {
     "jquery": ">=1.7"
   },
