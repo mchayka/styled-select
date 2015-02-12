@@ -10,8 +10,7 @@
         var css = {
             control: {
                 position: "relative",
-                opacity: "0",
-                zIndex: "1"
+                opacity: "0"
             },
             wrapper: {
                 position: "relative"
@@ -21,8 +20,7 @@
                 left: "0",
                 right: "0",
                 top: "0",
-                bottom: "0",
-                zIndex: "0"
+                bottom: "0"
             }
         };
         return css;

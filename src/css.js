@@ -11,7 +11,6 @@ var css = (function() {
     control: {
       position: 'relative',
       opacity: '0',
-      zIndex: '1'
    },
    wrapper: {
       position: 'relative'
@@ -22,7 +21,6 @@ var css = (function() {
      right: '0',
      top: '0',
      bottom: '0',
-     zIndex: '0'
    }
   };
 
