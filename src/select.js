@@ -36,30 +36,29 @@ var Select = (function() {
     // ### private
 
     _onChange: function() {
-      console.log('change');
-      this._setPlaceholderValue(this.getValue());
+      this._updatePlaceholder();
     },
 
     _checkChanges: function() {
-      this.getValue() === this._getDefaultValue() ?
+      this.getValue() === this.getDefaultValue() ?
       this.$control.removeClass('is-changed') : this.$control.addClass('is-changed');
       this.$control.trigger('changedInput.tt');
     },
 
     _setDefaultValue: function(value) {
-      this._setPlaceholderValue(value);
+      this._updatePlaceholder();
       this.$control.data('default-value', value);
     },
 
-    _setPlaceholderValue: function(value) {
-      this.$placeholder.text(value);
+    _updatePlaceholder: function() {
+      this.$placeholder.text($(this.$control).find(':selected').text());
     },
 
     // ### public
 
     setValue: function(value) {
       this.$control.val(value);
-      this._setPlaceholderValue(value);
+      this._updatePlaceholder();
     },
 
     getValue: function() {
