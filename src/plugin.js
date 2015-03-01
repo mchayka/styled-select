@@ -68,7 +68,7 @@
       }
     },
 
-    reset: function cancelValue() {
+    reset: function reset() {
       return this.each(cancelValue);
 
       function cancelValue() {
