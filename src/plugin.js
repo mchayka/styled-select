@@ -40,7 +40,7 @@
         var $control = $(this), styledSelect;
 
         if (styledSelect = $control.data(selectKey)) {
-          styledSelect.setVal(newVal);
+          styledSelect.setValue(newVal);
         }
       }
 
@@ -48,7 +48,7 @@
         var $control = $(this), styledSelect, query;
 
         if (styledSelect = $control.data(selectKey)) {
-          query = styledSelect.getVal();
+          query = styledSelect.getValue();
         }
 
         return query;
@@ -75,7 +75,7 @@
         var $control = $(this), styledSelect;
 
         if (styledSelect = $control.data(selectKey)) {
-          styledSelect.cancelValue();
+          styledSelect.reset();
         }
       }
     }
